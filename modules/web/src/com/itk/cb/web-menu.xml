@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <item screen="cb_Corporatebook" caption="mainMsg://menu_config.cb_Corporatebook" insertBefore="reports"
+          openType="NEW_TAB"/>
+    <menu id="glosarij" caption="mainMsg://menu_config.glosarij" insertAfter="bpm">
+        <item screen="cb_Category.browse" caption="mainMsg://menu_config.cb_Category.browse"/>
+        <item screen="cb_IndexGl.browse" caption="mainMsg://menu_config.cb_IndexGl.browse"/>
+        <item screen="cb_Glosarij.browse" caption="mainMsg://menu_config.cb_Glosarij.browse"/>
+    </menu>
+    <menu id="application-cb" caption="mainMsg://menu_config.application-cb" insertBefore="administration">
+        <item screen="cb_Documents.browse" caption="mainMsg://menu_config.cb_Documents.browse"/>
+        <item screen="cb_Structure.browse" caption="mainMsg://menu_config.cb_Structure.browse"/>
+    </menu>
+</menu-config>

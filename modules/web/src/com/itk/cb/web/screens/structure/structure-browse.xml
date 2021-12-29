@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://structureBrowse.caption"
+        focusComponent="structuresTable"
+        messagesPack="com.itk.cb.web.screens.structure">
+    <data readOnly="true">
+        <collection id="structuresDc"
+                    class="com.itk.cb.entity.Structure">
+            <view extends="_local">
+                <property name="parent" view="_minimal"/>
+            </view>
+            <loader id="structuresDl">
+                <query>
+                    <![CDATA[select e from cb_Structure e order by e.order]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout
+            spacing="true" expand="structuresTable">
+        <filter id="filter"
+                applyTo="structuresTable"
+                dataLoader="structuresDl">
+            <properties include=".*"/>
+        </filter>
+        <treeTable id="structuresTable"
+                   width="100%"
+                   dataContainer="structuresDc"
+                   hierarchyProperty="parent" >
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="structuresTable.create"/>
+                <button id="editBtn" action="structuresTable.edit"/>
+                <button id="removeBtn" action="structuresTable.remove"/>
+                <button id="refreshBtn" action="structuresTable.refresh"/>
+                <button id="excelBtn" action="structuresTable.excel"/>
+            </buttonsPanel>
+        </treeTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

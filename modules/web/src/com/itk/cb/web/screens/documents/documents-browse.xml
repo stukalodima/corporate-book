@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://documentsBrowse.caption"
+        focusComponent="documentsesTable"
+        messagesPack="com.itk.cb.web.screens.documents">
+    <data readOnly="true">
+        <collection id="documentsesDc"
+                    class="com.itk.cb.entity.Documents">
+            <view extends="_local"/>
+            <loader id="documentsesDl">
+                <query>
+                    <![CDATA[select e from cb_Documents e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="documentsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="documentsesTable"
+                dataLoader="documentsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="documentsesTable"
+                    width="100%"
+                    dataContainer="documentsesDc"
+                    multiselect="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="shortName"/>
+                <column id="onDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="documentsesTable.create"/>
+                <button id="editBtn" action="documentsesTable.edit"/>
+                <button id="removeBtn" action="documentsesTable.remove"/>
+                <button id="refreshBtn" action="documentsesTable.refresh"/>
+                <button id="excelBtn" action="documentsesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

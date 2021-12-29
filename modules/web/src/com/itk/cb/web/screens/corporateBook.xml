@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://corporatebook.caption"
+        messagesPack="com.itk.cb.web.screens">
+    <data readOnly="true">
+        <collection id="structuresDc"
+                    class="com.itk.cb.entity.Structure">
+            <view extends="_local">
+                <property name="parent" view="_minimal"/>
+                <property name="fileName" view="_local" fetch="AUTO"/>
+            </view>
+            <loader id="structuresDl">
+                <query>
+                    <![CDATA[select e from cb_Structure e order by e.order]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="hSplitBody">
+        <split id="hSplitBody" orientation="horizontal" width="100%" pos="20">
+            <vbox expand="treeMenu" height="100%">
+                <tree id="treeMenu" height="100%" width="100%" dataContainer="structuresDc" hierarchyProperty="parent">
+                    <treechildren captionProperty="name"/>
+                </tree>
+            </vbox>
+            <browserFrame id="frameDoc" width="100%" height="100%">
+            </browserFrame>
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://documentsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.itk.cb.web.screens.documents">
+    <data>
+        <instance id="documentsDc"
+                  class="com.itk.cb.entity.Documents">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="documentsDc">
+                <column width="350px">
+                    <textField id="shortNameField" property="shortName"/>
+                </column>
+                <column width="350px">
+                    <dateField id="onDateField" property="onDate"/>
+                </column>
+            </form>
+            <hbox width="100%" spacing="true">
+                <vbox width="100%" spacing="true" >
+                    <label value="msg://label.value" stylename="bold"/>
+                    <textArea id="taName" width="100%" rows="3" dataContainer="documentsDc" property="name">
+
+                    </textArea>
+                    <label value="msg://label.value_1" stylename="bold"/>
+                    <label value="msg://Documents.Terminu" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="terminu" resizableDirection="VERTICAL">
+
+                    </textArea>
+                    <label value="msg://Documents.celiDocumenta" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="celiDocumenta" resizableDirection="VERTICAL"
+                                  resizable="true">
+
+                    </textArea>
+                    <label value="msg://Documents.oblastDejstviya" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="oblastDejstviya" resizableDirection="VERTICAL" resizable="true">
+
+                    </textArea>
+                    <label value="msg://Documents.sferaPrimeneniya" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="sferaPrimeneniya" resizableDirection="VERTICAL" resizable="true">
+
+                    </textArea>
+                    <label value="msg://Documents.vladelecDocumenta" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="vladelecDocumenta" resizableDirection="VERTICAL" resizable="true">
+
+                    </textArea>
+                    <label value="msg://Documents.razrabDocumenta" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="razrabDocumenta" resizableDirection="VERTICAL" resizable="true">
+
+                    </textArea>
+                    <label value="msg://Documents.vneshnieNormu" stylename="bold"/>
+                    <textArea width="100%" dataContainer="documentsDc" property="razrabDocumenta" resizableDirection="VERTICAL" resizable="true">
+
+                    </textArea>
+                    <linkButton id="refreshDoc" caption="msg://linkButton.caption" invoke="onRefreshDocClick"></linkButton>
+
+                </vbox>
+                <vbox width="100%" expand="richText" height="100%" spacing="true">
+                    <richTextArea id="richText" width="100%" responsive="true" height="100%" dataContainer="documentsDc" property="text"/>
+                </vbox>
+            </hbox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitBtn" action="windowCommit"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

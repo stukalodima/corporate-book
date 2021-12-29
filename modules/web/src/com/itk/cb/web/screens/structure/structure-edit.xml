@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://structureEdit.caption"
+        focusComponent="form"
+        messagesPack="com.itk.cb.web.screens.structure">
+    <data>
+        <instance id="structureDc"
+                  class="com.itk.cb.entity.Structure">
+            <view extends="_local">
+                <property name="parent" view="_minimal"/>
+                <property name="fileName" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="structureDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <pickerField id="parentField" property="parent">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="orderField" property="order"/>
+                <upload fileStoragePutMode="IMMEDIATE" showFileName="true" id="fileNameField" property="fileName"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="commitBtn" action="windowCommit"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

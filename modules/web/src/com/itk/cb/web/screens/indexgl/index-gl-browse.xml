@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://indexGlBrowse.caption"
+        focusComponent="indexGlsTable"
+        messagesPack="com.itk.cb.web.screens.indexgl">
+    <data readOnly="true">
+        <collection id="indexGlsDc"
+                    class="com.itk.cb.entity.IndexGl">
+            <view extends="_local"/>
+            <loader id="indexGlsDl">
+                <query>
+                    <![CDATA[select e from cb_IndexGl e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="indexGlsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="indexGlsTable"
+                dataLoader="indexGlsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="indexGlsTable"
+                    width="100%"
+                    dataContainer="indexGlsDc"
+                    multiselect="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="indexGlsTable.create"/>
+                <button id="editBtn" action="indexGlsTable.edit"/>
+                <button id="removeBtn" action="indexGlsTable.remove"/>
+                <button id="refreshBtn" action="indexGlsTable.refresh"/>
+                <button id="excelBtn" action="indexGlsTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
